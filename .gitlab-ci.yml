@@ -30,5 +30,5 @@ cluster:
   tags:
     - k8s-runner
   script:
-    - kubectl apply -f deployment.yaml -n default
-    - kubectl apply -f load-balancer.yaml -n default
+    - kubectl apply -f deployment.yaml
+    - kubectl expose deployment dockercami --port=8080 --target-port=8080 --type=LoadBalancer --name=dockercami-loadbalance --namespace=default
