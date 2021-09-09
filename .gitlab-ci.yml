@@ -31,3 +31,4 @@ cluster:
     - k8s-runner
   script:
     - kubectl apply -f deployment.yaml
+    - kubectl apply -f load-balancer.yaml
