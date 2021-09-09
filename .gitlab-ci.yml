@@ -41,6 +41,6 @@ loadbalancer:
   tags:
     - k8s-runner
   rules:
-    - if: '$KUBELOADBALANCER =~ dockercami-loadbalance'
+    - if: '$KUBELOADBALANCER =~ dockercami'
   script:
     - kubectl expose deployment dockercami --port=8080 --target-port=8080 --type=LoadBalancer --name=dockercami-loadbalance --namespace=default
