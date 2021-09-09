@@ -5,10 +5,10 @@ runners:
         image = "ubuntu:16.04"
         helper_cpu_limit = "200m"
         privileged = true
-      [[runners.kubernetes.volumes.empty_dir]]
-        name = "docker-certs"
-        mount_path = "/certs/client"
-        medium = "Memory"
+      [[runners.kubernetes.volumes.host_path]]
+        name = "docker"
+        mount_path = "/var/run/docker.sock"
+        path = "/var/run/docker.sock"
 
 gitlabUrl: "https://gitlab.com/"
 
