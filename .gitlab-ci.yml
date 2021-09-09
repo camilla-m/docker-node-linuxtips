@@ -30,5 +30,5 @@ cluster:
   tags:
     - k8s-runner
   script:
-    - kubectl apply -f deployment.yaml
-    - kubectl apply -f load-balancer.yaml
+    - kubectl apply -f deployment.yaml -n default
+    - kubectl apply -f load-balancer.yaml -n default
