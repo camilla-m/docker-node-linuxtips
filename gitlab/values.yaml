@@ -5,10 +5,14 @@ runners:
         image = "ubuntu:16.04"
         helper_cpu_limit = "200m"
         privileged = true
-      [[runners.kubernetes.volumes.host_path]]
-        name = "docker"
-        mount_path = "/var/run/docker.sock"
-        path = "/var/run/docker.sock"
+      [runners.docker]
+        tls_verify = false
+        image = "docker:19.03.12"
+        privileged = false
+        disable_cache = false
+        volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+      [runners.cache]
+        Insecure = false
 
 gitlabUrl: "https://gitlab.com/"
 
