@@ -1,3 +1,7 @@
+image: docker:stable
+stages:
+  - docker_build
+  - deploy_k8s
 docker_build_job:
   image: docker:latest
   stage: docker_build
