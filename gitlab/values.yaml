@@ -1,10 +1,6 @@
 runners:
   config: |
     [[runners]]
-      [runners.kubernetes]
-        image = "ubuntu:16.04"
-        helper_cpu_limit = "200m"
-        privileged = true
       [runners.docker]
         tls_verify = false
         image = "docker:19.03.12"
