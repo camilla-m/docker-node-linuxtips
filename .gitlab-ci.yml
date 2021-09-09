@@ -27,8 +27,6 @@ stages:
 
 container:
   stage: container
-  tags:
-    - k8s-runner
   script:
     - docker build -t camillamartins/dockernode:$CI_PIPELINE_ID .
     - docker push camillamartins/dockernode:$CI_PIPELINE_ID
