@@ -31,13 +31,5 @@ cluster:
     - k8s-runner
   script:
     - kubectl apply -f deployment.yaml
-
-cluster:
-  image: bitnami/kubectl
-  stage: cluster
-  tags:
-    - k8s-runner
-  script:
-    - kubectl apply -f deployment.yaml
     - kubectl delete svc -n default dockercami-loadbalance --ignore-not-found=true
     - kubectl expose deployment dockercami --port=8080 --target-port=8080 --type=LoadBalancer --name=dockercami-loadbalance --namespace=default
