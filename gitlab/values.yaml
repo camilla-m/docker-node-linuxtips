@@ -4,6 +4,7 @@ runners:
       [runners.kubernetes]
         image = "ubuntu:16.04"
         helper_cpu_limit = "200m"
+        privileged = true
 
 gitlabUrl: "https://gitlab.com/"
 
