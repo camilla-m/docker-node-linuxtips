@@ -1,1 +1,15 @@
-
+docker_build_job:
+  image: docker:latest
+  stage: docker_build
+  tags:
+    - k8s-runner
+  script:
+    - docker build -t camillamartins/dockernode:$CI_PIPELINE_ID .
+    - docker push camillamartins/dockernode:$CI_PIPELINE_ID
+deploy_k8s_job:
+  image: bitnami/kubectl
+  stage: deploy_k8s
+  tags:
+    - k8s-runner
+  script:
+    - kubectl apply -f deployment.yaml

@@ -1,1 +1,5 @@
 npm-debug.log
+.gitlab-ci.yml
+.gitlab/*
+gitlab/*
+node_modules
