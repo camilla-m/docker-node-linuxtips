@@ -31,6 +31,6 @@ cluster:
     - k8s-runner
   script:
     - kubectl apply -f deployment.yaml
-    - kubectl set image deployment/dockercami dockercami=camillamartins/dockernode:$CI_PIPELINE_ID
+    - kubectl set image deployment/dockercami dockercami=camillamartins/dockernode:$CI_PIPELINE_ID -n default
     - kubectl delete svc -n default dockercami-loadbalance --ignore-not-found=true
     - kubectl expose deployment dockercami --port=8080 --target-port=8080 --type=LoadBalancer --name=dockercami-loadbalance --namespace=default
