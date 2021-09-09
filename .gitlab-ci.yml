@@ -9,6 +9,7 @@ variables:
 stages:
   - container
   - cluster
+  - loadbalancer
 
 build-job:      
   stage: container
@@ -31,4 +32,15 @@ cluster:
     - k8s-runner
   script:
     - kubectl apply -f deployment.yaml
+
+loadbalancer:
+  image: bitnami/kubectl
+  stage: cluster
+  variables:
+    - KUBELOADBALANCER: kubectl get svc -n default dockercami-loadbalance
+  tags:
+    - k8s-runner
+  rules:
+    - if: '$KUBELOADBALANCER =~ dockercami-loadbalance'
+  script:
     - kubectl expose deployment dockercami --port=8080 --target-port=8080 --type=LoadBalancer --name=dockercami-loadbalance --namespace=default
