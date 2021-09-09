@@ -1,14 +1,20 @@
-image: docker:latest
-
 stages:
   - container
   - cluster
 
-container:
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: ""
+
+build-job:      
   stage: container
   tags:
     - k8s-runner
+  image: docker:20.10.7
+  services:
+    - docker:20.10.7-dind
   script:
+    - sleep 300
     - docker build -t camillamartins/dockernode:$CI_PIPELINE_ID .
     - docker push camillamartins/dockernode:$CI_PIPELINE_ID
 
