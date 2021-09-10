@@ -12,4 +12,8 @@ app.get('/', (req, res) => {
   res.send('Punk do DevOps GITLAB!');
 });
 
+app.get('*', (req, res) => {
+  res.send('errrrouuuuu!', 404);
+});
+
 app.listen(PORT, HOST);
